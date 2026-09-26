@@ -22,7 +22,7 @@ cargo install cargo-ndk
 rustup target add aarch64-linux-android x86_64-linux-android
 ```
 
-Open this directory in Android Studio. Set `ANDROID_HOME` (or `local.properties` with `sdk.dir`) and `ANDROID_NDK_HOME` if your NDK is not discovered by `cargo-ndk`. Gradle builds Rust for ARM64 phones and x86_64 emulators before packaging the APK. Use a local Gradle 8.9 installation, run `gradle wrapper --gradle-version 8.9`, then `./gradlew assembleDebug`. The debug APK is `app/build/outputs/apk/debug/app-debug.apk`.
+Open this directory in Android Studio. Install Android SDK 36, set `ANDROID_HOME` (or `local.properties` with `sdk.dir`), and set `ANDROID_NDK_HOME` if your NDK is not discovered by `cargo-ndk`. Gradle builds Rust for ARM64 phones and x86_64 emulators before packaging the APK. Use a local Gradle 8.11.1 installation, run `gradle wrapper --gradle-version 8.11.1`, then `./gradlew assembleDebug`. The debug APK is `app/build/outputs/apk/debug/app-debug.apk`.
 
 Rust tests: `cargo test --manifest-path rust/Cargo.toml`.
 

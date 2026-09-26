@@ -1,6 +1,6 @@
 # Channel Surfer lineup
 
-The [Android Channel Surfer app](../../README.md) can load this smaller playlist:
+The Android Channel Surfer app can load this smaller playlist:
 
 `https://raw.githubusercontent.com/jakerman74/iptv/master/channel-surfer/lineup.m3u`
 

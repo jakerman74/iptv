@@ -1,7 +1,0 @@
-.gradle/
-.idea/
-local.properties
-**/build/
-rust/target/
-app/src/main/jniLibs/
-*.iml

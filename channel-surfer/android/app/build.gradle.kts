@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "org.channelsurfer.app"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         applicationId = "org.channelsurfer.app"
         minSdk = 26

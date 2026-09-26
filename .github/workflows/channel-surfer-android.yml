@@ -1,0 +1,44 @@
+name: Channel Surfer Android APK
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'channel-surfer/android/**'
+      - '.github/workflows/channel-surfer-android.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: channel-surfer/android
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - uses: android-actions/setup-android@v3
+      - name: Install Android SDK and NDK
+        run: |
+          sdkmanager --install "platforms;android-35" "build-tools;35.0.0" "ndk;27.2.12479018"
+          echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/27.2.12479018" >> "$GITHUB_ENV"
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android,x86_64-linux-android
+      - name: Install cargo-ndk
+        run: cargo install cargo-ndk --locked
+      - name: Test Rust engine
+        run: cargo test --manifest-path rust/Cargo.toml
+      - name: Build debug APK
+        run: gradle --no-daemon assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ChannelSurfer-debug-apk
+          path: channel-surfer/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error

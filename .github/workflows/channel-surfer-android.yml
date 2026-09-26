@@ -22,11 +22,11 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.9'
-      # GitHub's ubuntu-latest image includes Android SDK 35 and the NDK.
+          gradle-version: '8.11.1'
+      # GitHub's ubuntu-latest image includes Android SDK 36 and the NDK.
       - name: Check preinstalled Android SDK
         run: |
-          test -f "$ANDROID_HOME/platforms/android-35/android.jar"
+          test -f "$ANDROID_HOME/platforms/android-36/android.jar"
           test -d "$ANDROID_NDK_HOME"
       - uses: dtolnay/rust-toolchain@stable
         with:

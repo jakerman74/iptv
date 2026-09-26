@@ -1,1 +1,18 @@
-{}
+{
+  "source": "https://iptv-org.github.io/iptv/countries/us.m3u",
+  "categories": [
+    "Movies",
+    "Series",
+    "Comedy",
+    "News",
+    "Sports",
+    "Documentary",
+    "Classic",
+    "Entertainment"
+  ],
+  "include_ids": [
+    "NBC.us@WMAQTV"
+  ],
+  "exclude_ids": [],
+  "exclude_urls": []
+}
